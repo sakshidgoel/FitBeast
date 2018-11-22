@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Login</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+   <script type="text/javascript">
+    function fb()
+    {
+      window.location = "https://www.facebook.com/FitBeast-370979666779699/?ref=bookmarks";
+    }
+
+    function insta()
+    {
+      window.location = "https://www.instagram.com/fitbeast3?utm_source=ig_profile_share&igshid=nv1rx9quezld";
+    }
+
+    function twitter()
+    {
+      window.location = "https://twitter.com/FitBeast2?s=17";
+    }
+  </script>
+  <style type="text/css">
+    .loginPart
+{
+  width: 280px;
+  position: absolute;
+  top: 40%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.loginPart h1{
+  float: center;
+  color: yellow;
+  font-size: 40px;
+  width: 150px;
+  margin-bottom: 20px;
+  border-bottom: 6px solid #4caf50;
+  padding: 13px 0;
+}
+
+.textbox{
+  width: 100%;
+  overflow: hidden;
+  font-size: 20px;
+  padding-bottom: 8px;
+  margin-bottom: 8px 0;
+}
+
+.textbox input{
+  border: none;
+  outline: none;
+  color: yellow;
+  background: none;
+  width: 150px;
+  float: left;
+  font-size: 18px;
+  border-bottom: 2px solid #4caf50;
+}
+
+.button{
+  width: 55%;
+  background: black;
+  border : 2px solid #4caf50;
+  color: yellow;
+  cursor: pointer;
+}
+
+.regLink{
+  position: absolute;
+  left: 75%;
+  top: 60%;
+}
+
+a{
+  color: yellow;
+}
+  </style>
+</head>
+<body>
+      <a href="FITBEAST.html" class="thispage">
+        <img src="FitBeast_Black.png" alt="FITBEAST" style="width:300px; height:100px;border:0;"/></a>
+        <nav id="mainnav">
+        <ul> 
+      <li><a href="Eat.html">Food</a></li>
+      <li><a href="Cult.html">Workout</a></li>
+      <li><a href="Location.html">Location</a></li>
+      <li><a href="Login.html">Login</a></li>
+    </ul>
+  </nav>
+  <br><br>
+  <div class="loginPart">
+    <h1 style="color: black;">Login</h1>
+    <form method="post" action="login.php">
+      <div class="textbox"><input type="text" name="eAdr" placeholder="Email" required> <br></div>
+      <div class="textbox"><input type="password" name="password" placeholder="Password" required> <br></div>    <br>
+    <input class="button" type="submit" value="Login"><br>
+    </form>
+  </div>
+  <br>
+  <p class="regLink"><font color="yellow" style="size: 10px;"><b>New user? </font><u><a href="Reg.html">Sign up</a></u></b></p>
+  <br><br><br><br><br><br><br><br><br><br>
+   <br><br><br><br><br><br><br><br><br><br>
+   <br><br><br><br><br><br><br><br><br><br><br><br>
+  <footer>
+    <nav id="footernav">
+    <ul>
+      <li><a href="Terms.html">Terms & conditions</a></li>
+      <li><a href="Privacy.html">Privacy Policy</a></li>
+      <li><a href="Contact.html">Contact Us</a></li>
+      <li><img src="fb.png" class="icon" height="35" width="35" onclick="fb()" style="cursor:pointer;">
+      <img src="twitter.png" class="icon" height="35" width="35" onclick="twitter()" style="cursor: pointer;">
+      <img src="insta.png" class="icon" height="35" width="35" onclick="insta()" style="cursor: pointer;"></li>
+    </ul>
+    </nav>
+  </footer>
+</body>
+
+</html>
