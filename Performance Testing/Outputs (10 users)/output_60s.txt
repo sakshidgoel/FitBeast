@@ -1,0 +1,39 @@
+
+          /\      |‾‾|  /‾‾/  /‾/   
+     /\  /  \     |  |_/  /  / /    
+    /  \/    \    |      |  /  ‾‾\  
+   /          \   |  |‾\  \ | (_) | 
+  / __________ \  |__|  \__\ \___/ .io
+
+    init [----------------------------------------------------------] runner    init [----------------------------------------------------------] options    init [----------------------------------------------------------] executor    init [----------------------------------------------------------]   engine    init [----------------------------------------------------------]   collector    init [----------------------------------------------------------]   server  execution: local
+     output: -
+     script: k6-script.js
+
+    duration: 1m0s, iterations: -
+         vus: 10,   max: 10
+
+    init [----------------------------------------------------------] starting
+    ✓ Successful POST request
+    ✗ Status code is 200
+     ↳  99% — ✓ 9257 / ✗ 7
+    ✗ Response time is less than 200ms
+     ↳  87% — ✓ 1908 / ✗ 274
+    ✓ Content-Type is present
+    ✓ Your test name
+
+    checks.....................: 98.15% ✓ 14975 ✗ 281 
+    data_received..............: 39 MB  646 kB/s
+    data_sent..................: 1.4 MB 23 kB/s
+    http_req_blocked...........: avg=1.36ms   min=0s       med=997.6µs max=39.96ms  p(90)=1.99ms   p(95)=2.11ms  
+    http_req_connecting........: avg=1.22ms   min=0s       med=997.2µs max=39.96ms  p(90)=1.99ms   p(95)=2ms     
+    http_req_duration..........: avg=56.88ms  min=2.43ms   med=30.91ms max=547.94ms p(90)=137ms    p(95)=185.18ms
+    http_req_receiving.........: avg=2.74ms   min=0s       med=1ms     max=80.64ms  p(90)=5.7ms    p(95)=11.98ms 
+    http_req_sending...........: avg=100.63µs min=0s       med=0s      max=19.09ms  p(90)=362.4µs  p(95)=997µs   
+    http_req_tls_handshaking...: avg=0s       min=0s       med=0s      max=0s       p(90)=0s       p(95)=0s      
+    http_req_waiting...........: avg=54.04ms  min=1.02ms   med=28.86ms max=546.97ms p(90)=131.64ms p(95)=179.46ms
+    http_reqs..................: 9811   163.514101/s
+    iteration_duration.........: avg=1.09s    min=678.98ms med=1.1s    max=1.4s     p(90)=1.24s    p(95)=1.27s   
+    iterations.................: 538    8.966526/s
+    vus........................: 10     min=10  max=10
+    vus_max....................: 10     min=10  max=10
+

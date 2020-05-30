@@ -1,0 +1,923 @@
+{
+	"info": {
+		"_postman_id": "fa268e4d-852b-4504-80b9-79beea926acc",
+		"name": "Performance Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get default page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52b96686-b481-4a86-80fd-443f3757f2ac",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						""
+					]
+				},
+				"description": "This request is supposed to get the homepage of the project"
+			},
+			"response": []
+		},
+		{
+			"name": "get homepage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "16705cc5-e5f7-463f-b467-724bc3a06cdb",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/homepage",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"homepage"
+					]
+				},
+				"description": "This request gets us the homepage"
+			},
+			"response": []
+		},
+		{
+			"name": "get payment page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "25093e3e-4c24-47d8-87d7-b7b41adbb822",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/payment",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"payment"
+					]
+				},
+				"description": "This request gets the payment page"
+			},
+			"response": []
+		},
+		{
+			"name": "get cult page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4c6d4f13-04cb-4352-b0b9-3a946977d6c2",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/cult",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"cult"
+					]
+				},
+				"description": "This request gets the cult page"
+			},
+			"response": []
+		},
+		{
+			"name": "get login page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5c3ac919-6e80-4f24-b52d-f01228a085b9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "This request gets the login page"
+			},
+			"response": []
+		},
+		{
+			"name": "get signup page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "326e791e-f49f-41e4-9984-a75276a2fd35",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/signup",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"signup"
+					]
+				},
+				"description": "This request gets the signup page"
+			},
+			"response": []
+		},
+		{
+			"name": "get recommend page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eccbe9d4-0edb-4397-ae9f-c12531ca8777",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/recommend",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"recommend"
+					]
+				},
+				"description": "This request gets the recommend page"
+			},
+			"response": []
+		},
+		{
+			"name": "get merch page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a45d1e3e-604c-4356-938e-bd24aec905cf",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/recommend",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"recommend"
+					]
+				},
+				"description": "This request gets the merch page"
+			},
+			"response": []
+		},
+		{
+			"name": "registering a new user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fbbd4a38-78f7-4489-bb31-356a6bbcb94d",
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Tester\",\r\n\t\"email\": \"test123@gmail.com\",\r\n\t\"password\": \"test123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/register_user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"register_user"
+					]
+				},
+				"description": "This sends in user data and registers a new user"
+			},
+			"response": []
+		},
+		{
+			"name": "get extended_signup page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d849a749-496c-4842-aa77-d302adf756ca",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/extended_signup",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"extended_signup"
+					]
+				},
+				"description": "This request gets the extended signup page"
+			},
+			"response": []
+		},
+		{
+			"name": "successful login attempt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4f108b80-c440-4b24-a5c2-525b792955d9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Tester\",\r\n\t\"email\": \"test123@gmail.com\",\r\n\t\"password\": \"test123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/verify_login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"verify_login"
+					]
+				},
+				"description": "Sending a request to test successful login"
+			},
+			"response": []
+		},
+		{
+			"name": "failed login attempt with wrong password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba2639e4-a188-4126-80e5-cd23511689bf",
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Tester\",\r\n\t\"email\": \"test123@ail.com\",\r\n\t\"password\": \"wrong\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/verify_login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"verify_login"
+					]
+				},
+				"description": "Sending a request with wrong credentials for login"
+			},
+			"response": []
+		},
+		{
+			"name": "adding food to cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e8cb07a9-e26e-44d4-88eb-54d787b4cd8c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(200);",
+							"});",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"item\":\"Men Joggers\",\r\n\t\"cost\":699,\r\n\t\"category\":\"food\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/add_to_cart",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"add_to_cart"
+					]
+				},
+				"description": "Adding a food item to the cart"
+			},
+			"response": []
+		},
+		{
+			"name": "adding merchandise to cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d10b3773-edcd-4af2-847a-8a0c9f063996",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(200);",
+							"});",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"item\":\"Men Joggers\",\r\n\t\"cost\":699,\r\n\t\"category\":\"merchandise\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/add_to_cart",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"add_to_cart"
+					]
+				},
+				"description": "Adding a merchandise to the cart"
+			},
+			"response": []
+		},
+		{
+			"name": "logging out  the user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3e38dd1c-1bef-438e-a445-dbe8aaed70d6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/logout",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"logout"
+					]
+				},
+				"description": "Logging out the current logged in user"
+			},
+			"response": []
+		},
+		{
+			"name": "getting the recommendations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2980274c-473d-4411-974c-f466f7a70634",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/get_recommendations",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"get_recommendations"
+					]
+				},
+				"description": "Sending a get request to get the recommendations"
+			},
+			"response": []
+		},
+		{
+			"name": "getting the response of the recommendation system",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b105b0ef-e104-452f-9548-432342f7e2e0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.validity).to.eql(\"okays\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/pay_and_recommend",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"pay_and_recommend"
+					]
+				},
+				"description": "Sending a get request to get the response of the recommendation system"
+			},
+			"response": []
+		},
+		{
+			"name": "failed login attempt with wrong email id ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "abdf75b0-adcc-4b39-b39d-fa6d9f6b0908",
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Tester\",\r\n\t\"email\": \"test123@ail.com\",\r\n\t\"password\": \"wrong\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/verify_login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"verify_login"
+					]
+				},
+				"description": "Sending a login attempt with a login email that is not registered with us"
+			},
+			"response": []
+		},
+		{
+			"name": "logging out  the user who is not logged in",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "581e65f9-47f3-4477-bd54-a2f5b76b744b",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/logout",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"logout"
+					]
+				},
+				"description": "Logging out a user who is not logged in"
+			},
+			"response": []
+		},
+		{
+			"name": "show cart contents",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5593ce13-984d-4ccf-8de8-8a7d0636b0d8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/show_cart",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"show_cart"
+					]
+				},
+				"description": "Sends a request to fetch the contents of the cart"
+			},
+			"response": []
+		},
+		{
+			"name": "getting cart page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a993232a-8a27-46cd-92a0-a409d74cf7ff",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/cart",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"cart"
+					]
+				},
+				"description": "This request gets the cart page"
+			},
+			"response": []
+		},
+		{
+			"name": "getting eat page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f7480f03-406f-4373-ae32-87c3455a4307",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/eat",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"eat"
+					]
+				},
+				"description": "This request gets the eat page"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
