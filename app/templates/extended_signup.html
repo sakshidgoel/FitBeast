@@ -1,0 +1,250 @@
+<html>
+
+<head>
+	<title>Extended Signup</title>
+	<link href="/static/style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!--jQuery library-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!--Latest compiled and minified JavaScript-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+		form {
+			margin-left: 20%;
+			margin-right: 20%;
+			margin-top: 8.5%;
+
+		}
+
+		/*
+      #setStatus{
+          display:none;
+      }
+*/
+
+		/*
+      .form-control
+      {
+          padding: 20px;
+          margin-bottom: 30px;
+      }
+*/
+
+
+		label {
+			font-size: 15px;
+		}
+
+	</style>
+
+	<!--All XHR CALLS WILL GO FROM HERE-->
+
+	<script type="text/javascript">
+
+		
+//		$( "#dets" ).submit(function(event) {
+//			event.preventDefault();
+//			console.log("1");
+//			gender=document.querySelector('input[name="gender"]:checked').value;
+//			food_type =  document.querySelector('#food_type').value; 
+//            data = {
+//				gender: "",
+//				food_type: "",
+//			};
+//			data[gender]=gender;
+//			data[food_type]=food_type;
+//			console.log(data);
+//
+//			
+//		});
+		
+		
+		function saveData(event)
+		{
+		
+			event.preventDefault();
+			console.log("1");
+			gender=document.querySelector('input[name="gender"]:checked').value;
+			food_type =  document.querySelector('#food_type').value; 
+			xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = showReply;
+            data = {
+				gender: "",
+				food_type: "",
+			};
+			data["gender"]=gender;
+			data["food_type"]=food_type;
+			console.log(JSON.stringify(data));
+			xhr.open("POST", "/initial_store", true);
+			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+			xhr.send(JSON.stringify(data));
+			
+			
+		}
+		
+		
+//		function signUp(event) {
+//			event.preventDefault();
+//
+//			name = document.getElementById("name").value;
+//			email = document.getElementById("email").value;
+//			password = document.getElementById("pass").value;
+//			console.log(name);
+//			console.log(password);
+//
+//
+//
+//
+//			xhr = new XMLHttpRequest();
+//			xhr.onreadystatechange = showReply;
+//			data = {
+//				name: "",
+//				email: "",
+//				password: ""
+//			};
+//
+//			data["name"] = name;
+//			data["email"] = email;
+//			data["password"] = password;
+//			console.log(JSON.stringify(data));
+//			xhr.open("POST", "/register_user", true);
+//			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+//			xhr.send(JSON.stringify(data));
+//			extendSignup();
+//		}
+//
+		function showReply() {
+			if (xhr.readyState == 4 && xhr.status==200) {
+				alert("Sign Up Successful");
+				window.location = "http://127.0.0.1:5000/login";
+			}
+		}
+		
+
+
+		function fb() {
+			window.location = "https://www.facebook.com/FitBeast-370979666779699/?ref=bookmarks";
+		}
+
+		function insta() {
+			window.location = "https://www.instagram.com/fitbeast3?utm_source=ig_profile_share&igshid=nv1rx9quezld";
+		}
+
+		function twitter() {
+			window.location = "https://twitter.com/FitBeast2?s=17";
+		}
+
+	</script>
+
+</head>
+
+<body>
+
+
+	<!--        Navbar goes here-->
+	<div class="container-fluid">
+		<nav>
+			<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class=" navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myn">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<img src="/static/FitBeast_Black.png" height="30" width="200">
+				</div>
+			</div>
+
+		</nav>
+	</div>
+
+	<!--This should be sent to the database-->
+	<div class="container" id="extend_signup" style="border:3px white double;background-color: whitesmoke;opacity: 0.88;width: 40%;height: 60%;margin-top: 5%;">
+
+
+		<form style="color:#AEBD38;" onsubmit="saveData(event)">
+
+			<div class="form-group">
+				<label for="name">Gender</label>
+				<br>
+				<input type="radio" name="gender" value="male" id="male"><b style="color:gray">Male</b>
+				<br>
+				<input type="radio" name="gender" value="female" id="female"><b style="color:gray">Female</b>
+			</div>
+
+<!--
+			<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Food Type
+					<span class="caret"></span></button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Vegan</a></li>
+					<li><a href="#">Veg</a></li>
+					<li><a href="#">Non Veg</a></li>
+				</ul>
+			</div>
+-->
+		<select class="custom-select .dropdown-info" size="4" id="food_type">
+          <option selected>Select food type: </option>
+          <option value="vegan">Vegan</option>
+          <option value="veg">Veg</option>
+          <option value="nonveg">Non Veg</option>
+        </select> 
+			
+			
+			
+			
+			
+			
+<!--			<br>-->
+<!--
+			<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Sport
+					<span class="caret"></span></button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Cricket</a></li>
+					<li><a href="#">Futsal</a></li>
+					<li><a href="#">Hrx</a></li>
+				</ul>
+			</div>
+-->
+<!--			<br>-->
+			<div class="form-group">
+				<label for="name">Tshirt Size</label>
+				<br>
+				<input type="radio" name="size"><b style="color:gray">S</b>
+				<br>
+				<input type="radio" name="size"><b style="color:gray">M</b>
+				<br>
+				<input type="radio" name="size"><b style="color:gray">L</b>
+				<br>
+				<input type="radio" name="size"><b style="color:gray">XL</b>
+				<br>
+				<input type="radio" name="size"><b style="color:gray">>XL</b>
+			</div>
+
+
+			<br><br>
+			<button id="submit" type="submit" class="btn btn-primary" id="submit">Submit</button>
+
+		</form>
+	</div>
+
+
+	<!-- <footer>
+		<nav id="footernav">
+			<ul>
+				<li><a href="http://127.0.0.1:5000/terms">Terms & conditions</a></li>
+				<li><a href="http://127.0.0.1:5000/privacy">Privacy Policy</a></li>
+				<li><a href="http://127.0.0.1:5000/contact">Contact Us</a></li>
+				<li><img src="/static/fb.png" class="icon" height="35" width="35" onclick="fb()" style="cursor:pointer;">
+					<img src="/static/twitter.png" class="icon" height="35" width="35" onclick="twitter()" style="cursor: pointer;">
+					<img src="/static/insta.png" class="icon" height="35" width="35" onclick="insta()" style="cursor: pointer;"></li>
+			</ul>
+		</nav>
+	</footer>
+ -->
+
+
+</body>
+
+</html>

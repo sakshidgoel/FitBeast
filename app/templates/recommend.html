@@ -1,0 +1,284 @@
+<html>
+
+<head>
+	<title>For You</title>
+	<link href="/static/style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!--jQuery library-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!--Latest compiled and minified JavaScript-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+	<script type="text/javascript">
+		function fb() {
+			window.location = "https://www.facebook.com/FitBeast-370979666779699/?ref=bookmarks";
+		}
+
+		function insta() {
+			window.location = "https://www.instagram.com/fitbeast3?utm_source=ig_profile_share&igshid=nv1rx9quezld";
+		}
+
+		function twitter() {
+			window.location = "https://twitter.com/FitBeast2?s=17";
+		}		
+		
+		function logOut(event) {
+			event.preventDefault();
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = showLogoutStatus;
+			xhr.open("GET", "http://127.0.0.1:5000/logout", true);
+			xhr.send();
+		}
+
+		function showLogoutStatus() {
+			if (xhr.readyState == 4 && xhr.status==200) {
+
+				response = xhr.response;
+				splitted=response.split(":");
+				console.log(splitted[1]);
+				if(splitted[1].substr('1')!="") {
+					alert("Logged out Successfully!");
+					
+				}
+				else{
+					alert("You must login first!!");
+				}
+				window.open("http://127.0.0.1:5000/");
+				window.close()
+
+
+			}
+		}
+
+		function getRecommendations() {
+			//get the items pertaining to this user
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = showReply;
+			xhr.open("GET", "/get_recommendations", true);
+			xhr.send();
+
+
+		}
+
+		function showReply() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				// alert("in showreply");
+				response = xhr.response;
+				console.log(response, typeof(response));
+
+				obj = JSON.parse(response);
+				image = obj.image;
+				name = obj.name;
+				merch = obj.merchandise;
+
+				console.log(obj, typeof(obj));
+				console.log(image, typeof(image));
+				console.log(merch, typeof(merch));
+
+				var container = document.getElementById("recommend");
+
+				var h2 = document.createElement("h2");
+				h2.style.color = "white";
+				h2.innerHTML = "Name: " + name;
+				container.appendChild(h2);
+				
+				var h2 = document.createElement("h2");
+				h2.style.color = "white";
+				h2.innerHTML = "Food you may like: ";
+				container.appendChild(h2);
+				
+
+				
+
+				create_images(image);
+				var h2 = document.createElement("h2");
+				h2.style.color = "white";
+				h2.innerHTML = "Merchandise you may like: ";
+				container.appendChild(h2);
+				create_merch(merch);
+				var h2 = document.createElement("h3");
+				h2.style.color = "white";
+				h2.innerHTML = "Please check these out in our store!";
+				container.appendChild(h2);
+
+			}
+		}
+
+		function create_images(image) {
+			var n = image.length;
+			var container = document.getElementById("recommend");
+			for (i = 0; i < n; i++) {
+				
+				
+				var div=document.createElement("div");
+				var img = document.createElement("img");
+				var br = document.createElement("br");
+				var p=document.createElement("p");
+
+				img.src = "/static/" + image[i];
+				img.height = 250;
+				img.width = 250;
+				
+				p.innerHTML=image[i].split('.')[0];
+				p.style.color="white";
+				div.appendChild(img);
+				div.appendChild(p);
+				
+				container.appendChild(div);
+
+
+
+			}
+			container.appendChild(br);
+			var br = document.createElement("br");
+			container.appendChild(br);
+
+		}
+		
+		
+		
+		//further i should add a button for all of these to be sent into the cart and thats it i guess
+function create_merch(image) {
+			var n = image.length;
+			var container = document.getElementById("recommend");
+			for (i = 0; i < n; i++) {
+				
+				
+				var div=document.createElement("div");
+				var img = document.createElement("img");
+				var br = document.createElement("br");
+				var p=document.createElement("p");
+
+				img.src = "/static/" + image[i];
+				img.height = 250;
+				img.width = 250;
+				
+				p.innerHTML=image[i].split('.')[0];
+				p.style.color="white";
+				div.appendChild(img);
+				div.appendChild(p);
+				
+				container.appendChild(div);
+
+
+
+			}
+			container.appendChild(br);
+			var br = document.createElement("br");
+			container.appendChild(br);
+
+		}
+
+	</script>
+	<style type="text/css">
+		#menu {
+			position: absolute;
+			top: 250px;
+			left: 100px;
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		.button {
+			background: black;
+			border: 2px solid #4caf50;
+			color: white;
+			cursor: pointer;
+		}
+
+		body {
+			background-image: url("/static/love_yourself_1.jpg");
+			padding: 0px;
+			border: 0px;
+			height: 1010px;
+			background-size: 100% 100%;
+			background-color: white;
+			margin: 0px;
+			color: #151515;
+			font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", "Helvetica", "Arial", "sans-serif";
+		}
+
+		a {
+			color: yellow;
+		}
+
+		.thumbnail {
+			background-color: inherit;
+			border: none;
+			opacity: 0.9;
+		}
+
+		#recommend img {
+			margin-left: 70px;
+		}
+		#recommend div{
+			display:inline-block;
+		}
+		
+		#recommend p{
+			margin-left: 75px;
+		}
+
+
+	</style>
+</head>
+
+<body onload="getRecommendations()">
+	<!--    Navbar starts here-->
+	<div class="container-fluid">
+		<nav>
+			<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class=" navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myn">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="http://127.0.0.1:5000/homepage" class="navbar-brand"><img src="/static/FitBeast_Black.png" height="30" width="200"></a>
+				</div>
+				<div class="collapse navbar-collapse" id="myn">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="http://127.0.0.1:5000/eat"><span class="glyphicon glyphicon-cutlery"></span>&nbsp;Food
+							</a></li>
+						<li><a href="http://127.0.0.1:5000/cult"><span class="fas fa-dumbbell"></span>&nbsp;Workout</a></li>\
+
+						<li><a href="http://127.0.0.1:5000/merch"><span class="fas fa-tshirt"></span>&nbsp;Merchandise</a></li>
+						<li><a href="http://127.0.0.1:5000/cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;See Cart</a></li>
+						<li><a href="#" onclick="logOut(event)"><span class="glyphicon glyphicon-log-out" ></span>&nbsp;Logout</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</nav>
+	</div>
+	<br><br><br><br>
+
+	<!-- Main Body starts from here-->
+	<!--	Recommendation part goes here-->
+
+	<div id="recommend" class="container-fluid" style="display: inline-block;">
+
+
+
+	</div>
+
+	<br><br><br>
+
+	<br><br>
+	<footer>
+		<nav id="footernav">
+			<ul>
+				<li><a href="http://127.0.0.1:5000/terms">Terms & conditions</a></li>
+				<li><a href="http://127.0.0.1:5000/privacy">Privacy Policy</a></li>
+				<li><a href="http://127.0.0.1:5000/contact">Contact Us</a></li>
+				<li><img src="/static/fb.png" class="icon" height="35" width="35" onclick="fb()" style="cursor:pointer;" id="fb">
+					<img src="/static/twitter.png" class="icon" height="35" width="35" onclick="twitter()" style="cursor: pointer;" id="twitter">
+					<img src="/static/insta.png" class="icon" height="35" width="35" onclick="insta()" style="cursor: pointer;" id="instagram"></li>
+			</ul>
+		</nav>
+	</footer>
+</body>
+
+</html>

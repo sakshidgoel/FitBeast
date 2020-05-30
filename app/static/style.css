@@ -1,0 +1,123 @@
+html { 
+  background-size: cover;
+  background-color: white;
+}
+body {
+	background-image:url("1753.jpg");
+	padding: 0px;
+	border: 0px;
+	height: 750px;
+	background-size: 100% 100%;
+	background-color: white;
+	margin: 0px;
+	color: #151515;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", "Helvetica", "Arial", "sans-serif";
+}
+
+
+#wrapper {
+	width: 100%;
+	min-width: 700px;
+	max-width: 1000px;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#top {
+    overflow: hidden;
+}
+footer {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 2%;
+	background-color: black;
+	color: #FFFFFF;
+	clear: left;
+	position:fixed;
+	left:0;
+	bottom:0;
+	width:100%;
+}
+a {
+	font-weight:bold;
+	text-decoration: none;
+}
+a:link {
+	color: blue;
+}
+a:visited {
+	color: blueviolet;
+
+}
+a:hover, a:active, a:focus {
+	color: royalblue;
+	text-decoration: none;
+}
+#mainnav ul{
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	list-style-type: none;
+}
+#mainnav a {
+	width:25%;
+	display: block;
+	float: left;
+	text-align: center;
+	background-color: #000000;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#mainnav a:hover, #mainnav a:active, #mainnav a:focus, #mainnav a.thispage {
+	background-color: white;
+	color: black;
+	text-decoration: none;
+}
+#footernav ul{
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	list-style-type: none;
+}
+#footernav a{
+	width: 25%;
+	display: block;
+	float: left;
+	text-align: center;
+	background-color: #000000;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#footernav a:hover, #footernav a:active, #footernav a:focus, #footernav a.thispage {
+	background-color: white;
+	color: black;
+	text-decoration: none;
+}
+
+
+
+ul{
+	list-style-type:none;
+}
+
+
+column>img
+{
+    height:200px;
+    width: 200px;
+}
+

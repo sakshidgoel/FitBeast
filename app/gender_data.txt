@@ -1,0 +1,1 @@
+{'male':['men_joggers.jpg','men_sleeveless.jpg','men_tracksuit.jpg','men_tshirt.jpg'],'female':['women_hoodie.jpg','women_joggers.jpg','women_leggings.jpg','women_yoga.jpg']}

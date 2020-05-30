@@ -1,0 +1,350 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Cart</title>
+	<link href="/static/style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!--jQuery library-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!--Latest compiled and minified JavaScript-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+	<script type="text/javascript">
+
+		function preProcess(){
+			xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = showReply1;
+            xhr.open("GET", "/temp", true);
+            xhr.send();
+		}
+
+		function showReply1() {
+            console.log(xhr.status);
+            if (xhr.readyState == 4) {
+
+                resp = xhr.responseText;
+                name=resp;
+                splitted=name.split(" ");
+                // alert(splitted[0]);
+               	document.getElementById("userName").innerHTML = splitted[0];
+
+
+            }
+        }
+
+
+		//jQuery based function	
+
+		$(document).ready(function() {
+			// alert("In Display Cart!");
+			console.log("In display cart");
+			
+			//send a request from here that will maintain the orders of the person
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = showReply;
+			xhr.open("GET", "http://127.0.0.1:5000/show_cart", true);
+			xhr.send();			
+
+		});
+
+		function showReply() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				console.log('in showReply');
+				response = xhr.response;
+				console.log(response, typeof(response));
+				var obj = JSON.parse(response);
+
+
+				var values = [];
+
+				for (var k in obj) {
+					name = k;
+					values.push(obj[k]);
+				}
+				console.log("values: ",values);
+
+				cartTable = document.getElementById("cartTable");
+				tr = document.createElement("tr");
+				tr.style.backgroundColor = '#89ABE3FF';
+				th1 = document.createElement("th");
+				th2 = document.createElement("th");
+				th3 = document.createElement("th");
+
+				th1.innerHTML = "Item";
+				th3.innerHTML = "Category";
+				th2.innerHTML = "Cost";
+
+				tr.appendChild(th1);
+				tr.appendChild(th3);
+				tr.appendChild(th2);
+				cartTable.appendChild(tr);
+				total = 0;
+
+				for (i = 0; i < values[0].length; i++) {
+					console.log(values[0][i]);
+					tr = document.createElement("tr");
+					td1 = document.createElement("td");
+					td3 = document.createElement("td");
+					td2 = document.createElement("td");
+					j = values[0][i].split(":");
+					console.log(j)
+					item = j[1].split(",")[0];
+					//cost=parseInt(j[2].substr(0,j[2].length-1));
+					cost = j[2].substr(0, j[2].length - 1);
+//					console.log("cost: ",parseInt(cost))
+					category = j[3].substr(0, j[3].length - 1);
+
+
+					td1.innerHTML = item;
+					td3.innerHTML = category;
+					td2.innerHTML = parseInt(cost);
+					total = total + parseInt(cost);
+					//					div=document.createElement("div");
+					//					div.innerHTML="item= "+item+"; cost= "+cost;
+					tr.appendChild(td1);
+					tr.appendChild(td3);
+					tr.appendChild(td2);
+					cartTable.append(tr);
+				}
+
+
+				tr = document.createElement("tr");
+				tr.style.backgroundColor = '#89ABE3FF';
+				th1 = document.createElement("th");
+				th3 = document.createElement("th");
+				th2 = document.createElement("th");
+
+				th1.innerHTML = "Total";
+				th3.innerHTML = "";
+				th2.innerHTML = total;
+
+				tr.appendChild(th1);
+				tr.appendChild(th3);
+				tr.appendChild(th2);
+				cartTable.appendChild(tr);
+
+
+
+
+
+
+				//				name=response.split(":")[0].substr(1);
+				//				var colon=response.indexOf(':');
+				//				items=response.substr(colon+1);
+				//				console.log(response);
+				//				cartDiv=document.getElementById("cartDiv");
+				nameDiv = document.getElementById("nameDiv");
+				//				itemDiv=document.getElementById("itemDiv");
+				nameDiv.innerHTML = "Name: " + name;
+				//				itemDiv.innerHTML=items;
+
+
+
+
+
+
+
+			}
+
+		}
+
+		//		function logOut(event) {
+		//			event.preventDefault();
+		//			xhr = new XMLHttpRequest();
+		//			xhr.onreadystatechange = showLogoutStatus;
+		//			xhr.open("GET", "http://127.0.0.1:5000/logout", true);
+		//			xhr.send();
+		//		}
+
+		function logOut(event) {
+			event.preventDefault();
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = showLogoutStatus;
+			xhr.open("GET", "http://127.0.0.1:5000/logout", true);
+			xhr.send();
+		}
+
+		function showLogoutStatus() {
+			if (xhr.readyState == 4 && xhr.status==200) {
+
+				response = xhr.response;
+				splitted=response.split(":");
+				console.log(splitted[1]);
+				if(splitted[1].substr('1')!="") {
+					alert("Logged out succesfully!");
+					
+				}
+				else{
+					alert("You must login first to logout!");
+				}
+				window.open("http://127.0.0.1:5000/");
+                window.close()
+
+
+			}
+		}
+
+
+		function fb() {
+			window.location = "https://www.facebook.com/FitBeast-370979666779699/?ref=bookmarks";
+		}
+
+		function insta() {
+			window.location = "https://www.instagram.com/fitbeast3?utm_source=ig_profile_share&igshid=nv1rx9quezld";
+		}
+
+		function twitter() {
+			window.location = "https://twitter.com/FitBeast2?s=17";
+		}
+
+	</script>
+	<style type="text/css">
+		#menu {
+			position: absolute;
+			top: 250px;
+			left: 100px;
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		.button {
+			background: black;
+			border: 2px solid #4caf50;
+			color: white;
+			cursor: pointer;
+		}
+
+		body {
+			background-image: url("/static/1753.jpg");
+			padding: 0px;
+			border: 0px;
+			height: 750px;
+			background-size: 100% 100%;
+			background-color: white;
+			margin: 0px;
+			color: #151515;
+			font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", "Helvetica", "Arial", "sans-serif";
+		}
+
+		a {
+			color: yellow;
+		}
+
+		.stick {
+			position:fixed;
+			left:0;
+			bottom:0;
+			width:100%;
+		}
+
+		.thumbnail {
+			background-color: inherit;
+			border: none;
+			opacity: 0.9;
+		}
+
+		td,
+		th {
+			padding: 10px;
+		}
+
+		tr {
+			background-color: white;
+		}
+
+	</style>
+</head>
+
+<body onload = "preProcess()">
+	<!--    Navbar starts here-->
+	<div class="container-fluid">
+		<nav>
+			<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class=" navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myn">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="http://127.0.0.1:5000/homepage" class="navbar-brand"><img src="/static/FitBeast_Black.png" height="30" width="200"></a>
+				</div>
+				<div class="collapse navbar-collapse" id="myn">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="http://127.0.0.1:5000/eat"><span class="glyphicon glyphicon-cutlery"></span>&nbsp;Food
+							</a></li>
+						<li><a href="http://127.0.0.1:5000/cult"><span class="fas fa-dumbbell"></span>&nbsp;Workout</a></li>
+
+						<li><a href="http://127.0.0.1:5000/merch"><span class="fas fa-tshirt"></span>&nbsp;Merchandise</a></li>
+						<li><a href="http://127.0.0.1:5000/recommend" id="foryou"><span class="glyphicon glyphicon-user"></span>&nbsp;For <div id="userName">[NAME]</div>
+                                <!--                        ->This will come from database and this is a personalise page for that perosn-->
+                            </a></li>
+						<li><a href="#" onclick="logOut(event)"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</nav>
+	</div>
+	<br><br><br><br>
+
+	<!-- Main Body starts from here-->
+
+
+	<!--
+		<b style="font-size: 30px">Name: </b><div id="nameDiv" style="font-size: 30px"></div>
+		<b style="font-size: 30px">Items: </b><div id="itemDiv" style="font-size: 30px"></div>
+-->
+
+	<div>
+
+		<div id="nameDiv" style="font-family: cursive;font-size: 30px;color: white;"></div>
+
+		<center>
+			<table border="3px white solid" id="cartTable" class="table table-hover">
+
+
+
+
+			</table>
+		</center>
+	</div>
+
+
+
+	<br><br><br>
+	<div class="container">
+		<!--		put absolute path here-->
+		<center>
+			<a href="http://127.0.0.1:5000/payment">
+
+				<button id="payment" type="submit" class="btn btn-primary">Proceed to Payment</button>
+
+
+			</a>
+
+		</center>
+	</div>
+
+
+
+	<br><br><br><br>
+	<footer class="stick">
+		<nav id="footernav">
+			<ul>
+				<li><a href="http://127.0.0.1:5000/terms">Terms & conditions</a></li>
+				<li><a href="http://127.0.0.1:5000/privacy">Privacy Policy</a></li>
+				<li><a href="http://127.0.0.1:5000/contact">Contact Us</a></li>
+				<li><img src="/static/fb.png" class="icon" height="35" width="35" onclick="fb()" style="cursor:pointer;">
+					<img src="/static/twitter.png" class="icon" height="35" width="35" onclick="twitter()" style="cursor: pointer;">
+					<img src="/static/insta.png" class="icon" height="35" width="35" onclick="insta()" style="cursor: pointer;"></li>
+			</ul>
+		</nav>
+	</footer>
+
+
+</body>
+
+</html>

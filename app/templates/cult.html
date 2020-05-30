@@ -1,0 +1,288 @@
+<html>
+
+<head>
+	<title>Workout</title>
+	<link href="/static/style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!--jQuery library-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!--Latest compiled and minified JavaScript-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+	<script type="text/javascript">
+		function toCart(item, price) {
+			alert(item+" selected!");
+			console.log(item, price);
+
+
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = showReply;
+
+
+			data = {
+				item: "",
+				cost: ""
+			};
+
+			data["item"] = item;
+			data["cost"] = price;
+			data["category"] = "session";
+			console.log(JSON.stringify(data));
+			xhr.open("POST", "http://127.0.0.1:5000/add_to_cart", true);
+			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+			xhr.send(JSON.stringify(data));
+
+		}
+
+
+		function showReply() {
+			if (xhr.readyState == 4) {
+				console.log("Added to cart-->from server");
+				alert("Added to cart!");
+			}
+		}
+
+		function logOut(event) {
+			event.preventDefault();
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = showLogoutStatus;
+			xhr.open("GET", "http://127.0.0.1:5000/logout", true);
+			xhr.send();
+		}
+
+		function showLogoutStatus() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+
+				response = xhr.response;
+				splitted = response.split(":");
+				console.log(splitted[1]);
+				if (splitted[1].substr('1') != "") {
+					alert("Logged out Successfully!");
+
+				} else {
+					alert("You must login first!!");
+				}
+				window.open("http://127.0.0.1:5000/");
+				window.close()
+
+
+			}
+		}
+
+		function fb() {
+			window.location = "https://www.facebook.com/FitBeast-370979666779699/?ref=bookmarks";
+		}
+
+		function insta() {
+			window.location = "https://www.instagram.com/fitbeast3?utm_source=ig_profile_share&igshid=nv1rx9quezld";
+		}
+
+		function twitter() {
+			window.location = "https://twitter.com/FitBeast2?s=17";
+		}
+
+		$(document).ready(function() {
+        
+		                xhr = new XMLHttpRequest();
+                        xhr.onreadystatechange = showReply1;
+                        xhr.open("GET", "/temp", true);
+                        xhr.send();
+		
+    });
+		
+		
+
+        function showReply1() {
+            console.log(xhr.status);
+            if (xhr.readyState == 4) {
+
+                resp = xhr.responseText;
+                name=resp;
+                splitted=name.split(" ");
+                // alert(splitted[0]);
+               	document.getElementById("userName").innerHTML = splitted[0];
+
+
+            }
+        }
+
+	</script>
+
+	<style type="text/css">
+
+		.button {
+			background: black;
+			border: 2px solid #4caf50;
+			color: white;
+			cursor: pointer;
+		}
+
+		
+
+		a {
+			color: yellow;
+		}
+
+		.thumbnail {
+			background-color: inherit;
+			border: none;
+			opacity: 0.9;
+		}
+
+	</style>
+
+</head>
+
+<body>
+	<!--
+    <nav id="mainnav">
+        <ul>
+            <li><a href="Eat.html">Food</a></li>
+            <li><a href="Cult.html">Workout</a></li>
+            <li><a href="Location.html">Location</a></li>
+            <li><a href="Login.html">Login</a></li>
+        </ul>
+    </nav>
+-->
+	<!--    Navbar starts here-->
+	<div class="container-fluid">
+		<nav>
+			<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class=" navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myn">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="http://127.0.0.1:5000/homepage" class="navbar-brand"><img src="/static/FitBeast_Black.png" height="30" width="200"></a>
+				</div>
+				<div class="collapse navbar-collapse" id="myn">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="http://127.0.0.1:5000/eat"><span class="glyphicon glyphicon-cutlery"></span>&nbsp;Food
+							</a></li>
+
+						<li><a href="http://127.0.0.1:5000/merch"><span class="fas fa-tshirt"></span>&nbsp;Merchandise</a></li>
+						<li><a href="http://127.0.0.1:5000/cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;See Cart</a></li>
+						<li><a href="http://127.0.0.1:5000/recommend" id="foryou"><span class="glyphicon glyphicon-user"></span>&nbsp;For <div id="userName">[NAME]</div>
+                                <!--                        ->This will come from database and this is a personalise page for that perosn-->
+                            </a></li>
+						<li><a href="#" onclick="logOut(event)"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</nav>
+	</div>
+
+	<br><br><br><br>
+
+
+	<!-- Main body starts from here-->
+	<div class="row">
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<img src="/static/mma_boxing.jpg" alt="mma" style="width: 250px;height: 250px;">
+				<div>
+					<center>
+
+						<b style="color:cyan;">MMA - Rs 450</b>
+						<br>
+						<button class="book_class" onclick="toCart('MMA',450)"> Book Session</button>
+
+					</center>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<img src="/static/yoga.png" alt="yoga" style="width: 250px;height: 250px;">
+				<div>
+					<center>
+
+						<b style="color:cyan;">Yoga - Rs 550</b>
+						<br>
+						<button class="book_class" onclick="toCart('Yoga',550)"> Book Session</button>
+
+					</center>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<img src="/static/snc.jpg" alt="snc" style="width: 250px;height: 250px;">
+				<div>
+					<center>
+
+						<b style="color:cyan;">SNC - Rs 650</b>
+						<br>
+						<button class="book_class" onclick="toCart('SNC',650)"> Book Session</button>
+
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<img src="/static/crossfit.jpg" alt="crossfit" style="width: 250px;height: 250px;">
+				<div>
+					<center>
+
+						<b style="color:cyan;">CrossFit - Rs 700</b>
+						<br>
+						<button class="book_class" onclick="toCart('CrossFit',700)"> Book Session</button>
+
+					</center>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<img src="/static/zumba.jpg" alt="zumba" style="width: 250px;height: 250px;">
+				<div>
+					<center>
+
+						<b style="color:cyan;">Zumba - Rs 500</b>
+						<br>
+						<button class="book_class" onclick="toCart('Zumba',500)"> Book Session</button>
+
+					</center>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<img src="/static/hrx.jpg" alt="hrx" style="width: 250px;height: 250px;">
+				<div>
+					<center>
+
+						<b style="color:cyan;">HRX - Rs 800</b>
+						<br>
+						<button class="book_class" onclick="toCart('HRX',800)"> Book Session</button>
+
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<nav id="footernav">
+			<ul>
+				<li><a href="http://127.0.0.1:5000/terms">Terms & conditions</a></li>
+				<li><a href="http://127.0.0.1:5000/privacy">Privacy Policy</a></li>
+				<li><a href="http://127.0.0.1:5000/contact">Contact Us</a></li>
+				<li><img src="/static/fb.png" class="icon" height="35" width="35" onclick="fb()" style="cursor:pointer;">
+					<img src="/static/twitter.png" class="icon" height="35" width="35" onclick="twitter()" style="cursor: pointer;">
+					<img src="/static/insta.png" class="icon" height="35" width="35" onclick="insta()" style="cursor: pointer;"></li>
+			</ul>
+		</nav>
+	</footer>
+
+
+</body>
+
+</html>

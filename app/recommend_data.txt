@@ -1,0 +1,1 @@
+{'vegan':['american_garden_salad.jpg','veg_thai_noodles.jpg','jamaican_meal.jpg'],'veg':['veg_thai_noodles.jpg','paneer_soy_salad.jpeg'],'nonveg':['american_chicken_salad.jpg','ethiopian_chicken_salad.jpg']}

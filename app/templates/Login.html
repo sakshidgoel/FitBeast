@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link href="/static/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--jQuery library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!--Latest compiled and minified JavaScript-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        form {
+            margin-left: 20%;
+            margin-right: 20%;
+            margin-top: 20%;
+
+        }
+
+        /*
+      .form-control
+      {
+          padding: 20px;
+          margin-bottom: 30px;
+      }
+*/
+
+
+        label {
+            font-size: 15px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function login(event) {
+            event.preventDefault();
+            email = document.getElementById("email").value;
+            password = document.getElementById("password").value;
+            xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = showReply;
+            //create a json to be sent over the network
+            data = {
+                email: "",
+                password: ""
+            };
+
+            data["email"] = email;
+            data["password"] = password;
+            console.log(JSON.stringify(data));
+            xhr.open("POST", "/verify_login", true);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhr.send(JSON.stringify(data));
+        }
+
+        function showReply() {
+            console.log(xhr.status);
+            if (xhr.readyState == 4 && xhr.status == 200) {
+				
+				response=xhr.response;
+				console.log(xhr.response,typeof(xhr.response));
+				
+               // alert("Logged in successfully");
+               // window.open("http://127.0.0.1:5000/homepage");               
+				stat=xhr.status;
+				console.log("hi");
+				console.log("stat",stat==500);
+				// window.open("http://127.0.0.1:5000/homepage");
+				if(stat==200){
+					alert("Logged in successfully");
+               	window.open("http://127.0.0.1:5000/homepage");
+                window.close();
+				}
+				else if(stat==500){
+					alert("Email not registered!");
+					document.getElementById("email").value="";
+           		document.getElementById("password").value="";
+				}
+				else{
+					alert("Wrong username or password");
+					document.getElementById("email").value="";
+           		document.getElementById("password").value="";
+				}
+				
+				
+            }
+        }
+		
+		
+	function fb()
+    {
+      window.location = "https://www.facebook.com/FitBeast-370979666779699/?ref=bookmarks";
+    }
+
+    function insta()
+    {
+      window.location = "https://www.instagram.com/fitbeast3?utm_source=ig_profile_share&igshid=nv1rx9quezld";
+    }
+
+    function twitter()
+    {
+      window.location = "https://twitter.com/FitBeast2?s=17";
+    }
+		
+		
+    </script>
+
+</head>
+
+<body>
+
+
+    <!--        Navbar goes here-->
+    <div class="container-fluid">
+        <nav>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class=" navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myn">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img src="/static/FitBeast_Black.png" class="navbar-brand" height="30" width="200">
+                </div>
+            </div>
+
+        </nav>
+    </div>
+
+
+    <!--Login form goes here-->
+
+    <div class="container" style="border:3px white double;background-color: whitesmoke;opacity: 0.88;width: 40%;height: 60%;margin-top: 5%;">
+        <form style="color:#AEBD38;" onsubmit="login(event)">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary" name="submitlogin">Submit</button>
+        </form>
+    </div>
+<br><br><br><br><br><br><br><br><br><br>
+	    <footer>
+        <nav id="footernav">
+            <ul>
+                <li><a href="http://127.0.0.1:5000/terms">Terms & conditions</a></li>
+                <li><a href="http://127.0.0.1:5000/privacy">Privacy Policy</a></li>
+                <li><img src="/static/fb.png" class="icon" height="35" width="35" onclick="fb()" style="cursor:pointer;">
+                    <img src="/static/twitter.png" class="icon" height="35" width="35" onclick="twitter()" style="cursor: pointer;">
+                    <img src="/static/insta.png" class="icon" height="35" width="35" onclick="insta()" style="cursor: pointer;"></li>
+            </ul>
+        </nav>
+    </footer>
+</body></html>

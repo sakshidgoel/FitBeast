@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Payment</title>
+	<link href="/static/style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!--jQuery library-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!--Latest compiled and minified JavaScript-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+	<script type="text/javascript">
+		//related scripts will go here
+		function paySecurely() {
+
+
+			
+			//here we do the xhr calling and so on...
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = showReply;
+			//console.log(JSON.stringify(data));
+			xhr.open("GET", "http://127.0.0.1:5000/pay_and_recommend", true);
+			xhr.send();
+
+			
+			
+			//do all payment related stuff here 
+			
+			
+			alert("Payment Successful!"  + "\n" +"Thank You for shopping with us!");	
+			
+			var option = prompt("Do you want to continue shopping?", "Yes or No");
+			if (option == "Yes") {
+				window.open("http://127.0.0.1:5000/homepage");
+				window.close()
+			} 
+			else {
+				window.open("http://127.0.0.1:5000/");
+				window.close()
+			}
+
+
+
+		}
+		
+		function showReply() {
+			if (xhr.readyState == 4 && xhr.status==200) {
+				// alert("Added to cart-->from server");
+				console.log("SUCCESS");
+			}
+		}
+
+		function logOut(event) {
+			event.preventDefault();
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = showLogoutStatus;
+			xhr.open("GET", "http://127.0.0.1:5000/logout", true);
+			xhr.send();
+		}
+
+		function showLogoutStatus() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+
+				response = xhr.response;
+				splitted = response.split(":");
+				console.log(splitted[1]);
+				if (splitted[1].substr('1') != "") {
+					alert("Logged out Successfully!");
+					console.log("Logged out Successfully!");
+
+				} else {
+					alert("You must login first!!");
+					console.log("You must login first!!");
+				}
+				window.open("http://127.0.0.1:5000/");
+				window.close();
+
+
+			}
+		}
+
+
+		function fb() {
+			window.location = "https://www.facebook.com/FitBeast-370979666779699/?ref=bookmarks";
+		}
+
+		function insta() {
+			window.location = "https://www.instagram.com/fitbeast3?utm_source=ig_profile_share&igshid=nv1rx9quezld";
+		}
+
+		function twitter() {
+			window.location = "https://twitter.com/FitBeast2?s=17";
+		}
+
+		$(document).ready(function() {
+        
+		                xhr = new XMLHttpRequest();
+                        xhr.onreadystatechange = showReply1;
+                        xhr.open("GET", "/temp", true);
+                        xhr.send();
+		
+    });
+		
+		
+
+        function showReply1() {
+            console.log(xhr.status);
+            if (xhr.readyState == 4) {
+
+                resp = xhr.responseText;
+                name=resp;
+                splitted=name.split(" ");
+                // alert(splitted[0]);
+               	document.getElementById("userName").innerHTML = splitted[0];
+
+
+            }
+        }
+
+	</script>
+	<style type="text/css">
+		#menu {
+			position: absolute;
+			top: 250px;
+			left: 100px;
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		.button {
+			background: black;
+			border: 2px solid #4caf50;
+			color: white;
+			cursor: pointer;
+		}
+
+		body {
+			background-image: url("/static/1753.jpg");
+			padding: 0px;
+			border: 0px;
+			height: 750px;
+			background-size: 100% 100%;
+			background-color: white;
+			margin: 0px;
+			color: #151515;
+			font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", "Helvetica", "Arial", "sans-serif";
+		}
+
+		a {
+			color: yellow;
+		}
+
+		.thumbnail {
+			background-color: inherit;
+			border: none;
+			opacity: 0.9;
+		}
+
+	</style>
+</head>
+
+<body>
+	<!--    Navbar starts here-->
+	<div class="container-fluid">
+		<nav>
+			<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class=" navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myn">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="http://127.0.0.1:5000/homepage" class="navbar-brand"><img src="/static/FitBeast_Black.png" height="30" width="200"></a>
+				</div>
+				<div class="collapse navbar-collapse" id="myn">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="http://127.0.0.1:5000/eat"><span class="glyphicon glyphicon-cutlery"></span>&nbsp;Food
+							</a></li>
+						<li><a href="http://127.0.0.1:5000/cult"><span class="fas fa-dumbbell"></span>&nbsp;Workout</a></li>
+						<li><a href="http://127.0.0.1:5000/merch"><span class="fas fa-tshirt"></span>&nbsp;Merchandise</a></li>
+                        <li><a href="http://127.0.0.1:5000/cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;See Cart</a></li>
+						<li><a href="http://127.0.0.1:5000/recommend" id="foryou"><span class="glyphicon glyphicon-user"></span>&nbsp;For <div id="userName">[NAME]</div>
+                                <!--                        ->This will come from database and this is a personalise page for that perosn-->
+                            </a></li>
+						<li><a href="#" onclick="logOut(event)"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</nav>
+	</div>
+	<br><br><br><br>
+
+	<!-- Main Body starts from here-->
+
+	<div class="container" id="extend_signup" style="border:3px white double;background-color: whitesmoke;opacity: 0.88;width: 30%;height: 40%;margin-top: 5%;margin-left: 35%;">
+
+
+		<form style="color:#AEBD38;" onsubmit="signUp(event)">
+
+			<br><br>
+
+			<div class="form-group">
+				<label for="name">Name</label>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="text" name="name" id="name" required>
+			</div>
+
+			<div class="form-group">
+				<label for="number">Phone No</label>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="number" name="number" id="number" required>
+			</div>
+			<div class="form-group">
+				<label for="number">Card No</label>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="number" name="number1" id="number1" min="0000" max="9999" placeholder="XXXX" required>
+				&nbsp;
+				<input type="number" name="number2" id="number2" min="0000" max="9999" placeholder="XXXX" required>
+				&nbsp;
+				<input type="number" name="number3" id="number3" min="0000" max="9999" placeholder="XXXX" required>
+				&nbsp;
+				<input type="number" name="number4" id="number4" min="0000" max="9999" placeholder="XXXX" required>
+			</div>
+			<div class="form-group">
+				<label for="number">CVV</label>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="number" name="cvv" id="cvv" min="000" max="999" placeholder="XXX" required>
+			</div><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button id="submit" type="submit" class="btn btn-primary" onclick="paySecurely()" name="payment">Pay Securely</button>
+
+		</form>
+	</div>
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<footer>
+		<nav id="footernav">
+			<ul>
+				<li><a href="http://127.0.0.1:5000/terms">Terms & conditions</a></li>
+				<li><a href="http://127.0.0.1:5000/privacy">Privacy Policy</a></li>
+				<li><a href="http://127.0.0.1:5000/contact">Contact Us</a></li>
+				<li><img src="/static/fb.png" class="icon" height="35" width="35" onclick="fb()" style="cursor:pointer;">
+					<img src="/static/twitter.png" class="icon" height="35" width="35" onclick="twitter()" style="cursor: pointer;">
+					<img src="/static/insta.png" class="icon" height="35" width="35" onclick="insta()" style="cursor: pointer;"></li>
+			</ul>
+		</nav>
+	</footer>
+
+
+
+
+</body>
+
+</html>
