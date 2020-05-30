@@ -38,8 +38,8 @@ class FlaskBookshelfTests(unittest.TestCase):
 		body = {'name': "UnitTest", 'email': "blahblah", 'password': "unittest"}
 		result = self.app.post("/register_user", data = json.dumps(body), content_type='application/json')		
 		print("Received Response:", result)
-		print("Expected Response: 500")
-		self.assertEqual(result.status_code, 500)		
+		print("Expected Response: 400")
+		self.assertEqual(result.status_code, 400)		
 		self.assertIsNone(result)
 		print("\n\n\n")
 
@@ -85,8 +85,8 @@ class FlaskBookshelfTests(unittest.TestCase):
 		body = {"item":"hdws","cost":989,"category":"idk"}
 		result = self.app.post("/add_to_cart", data = json.dumps(body), content_type='application/json')
 		print("Received Response:", result)
-		print("Expected Response: 409")
-		self.assertEqual(result.status_code, 409)
+		print("Expected Response: 400")
+		self.assertEqual(result.status_code, 400)
 		self.assertIsNotNone(result)
 		print("\n\n\n")
 
@@ -107,8 +107,8 @@ class FlaskBookshelfTests(unittest.TestCase):
 		print("TEST CASE 8: Logging Out without Logging In\n")
 		result = self.app.get('/logout')
 		print("Received Response:", result)
-		print("Expected Response: 200")
-		self.assertEqual(result.status_code, 200)
+		print("Expected Response: 400")
+		self.assertEqual(result.status_code, 400)
 		self.assertIsNotNone(result.data)
 		print("\n\n\n")
 
@@ -213,6 +213,39 @@ class FlaskBookshelfTests(unittest.TestCase):
 		self.assertEqual(result.status_code, 200)
 		self.assertIsNotNone(result.data)
 		print("\n\n\n")
+
+	# web page 9 -> Terms Page
+	def test_I_terms_page(self):
+		print("\n\n\n")
+		print("WEBPAGE 9: Loading Terms & Conditions Page\n")
+		result = self.app.get('/terms')
+		print("Received Response:", result)
+		print("Expected Response: 200")
+		self.assertEqual(result.status_code, 200)
+		self.assertIsNotNone(result.data)
+		print("\n\n\n")
+
+	# web page 10 -> Privacy Page
+	def test_J_privacy_page(self):
+		print("\n\n\n")
+		print("WEBPAGE 10: Loading Privacy Page\n")
+		result = self.app.get('/privacy')
+		print("Received Response:", result)
+		print("Expected Response: 200")
+		self.assertEqual(result.status_code, 200)
+		self.assertIsNotNone(result.data)
+		print("\n\n\n")
+
+	# web page 11 -> Contact Us Page
+	def test_K_contact_page(self):
+		print("\n\n\n")
+		print("WEBPAGE 11: Loading Contact Us Page\n")
+		result = self.app.get('/contact')
+		print("Received Response:", result)
+		print("Expected Response: 200")
+		self.assertEqual(result.status_code, 200)
+		self.assertIsNotNone(result.data)
+		print("\n\n\n")		
 
 if __name__ == '__main__':
 	unittest.main()
